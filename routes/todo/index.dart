@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:dart_frog/dart_frog.dart';
-import 'package:todo_list/controllers/todo_controller.dart';
 import 'package:todo_list/errors/error_responses.dart';
-import 'package:todo_list/models/todo.dart';
+import 'package:todo_list/generated/prisma/model.dart';
+import 'package:todo_list/helpers/json_converters.dart';
+import 'package:todo_list/repository/todo_repository.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   return switch (context.request.method) {
@@ -14,10 +15,9 @@ Future<Response> onRequest(RequestContext context) async {
 }
 
 Future<Response> _getTodos(RequestContext context) async {
-  final controller = context.read<TodoController>();
-
-  final todosJson = controller.todos.map((todo) => todo.toJson()).toList();
-  return Response.json(body: todosJson);
+  final todoRepository = context.read<TodoRepository>();
+  final List<Map<String, dynamic>> todos = await todoRepository.getTodos();
+  return Response.json(body: todos);
 }
 
 Future<Response> _createTodo(RequestContext context) async {
@@ -28,15 +28,22 @@ Future<Response> _createTodo(RequestContext context) async {
   }
 
   try {
-    final bodyJson = jsonDecode(bodyString) as Map<String, dynamic>;
-    final todo = Todo.createFromJson(bodyJson);
-    context.read<TodoController>().todos.add(todo);
+    final json = jsonDecode(bodyString) as Map<String, dynamic>;
+
+    if (!json.containsKey("title") || !json.containsKey("description")) {
+      return ErrorResponses.missingFields();
+    }
+
+    final todoRepository = context.read<TodoRepository>();
+
+    Todo todo = await todoRepository.createTodo(
+      title: jsonToString("title", json) ?? "",
+      description: jsonToString("description", json) ?? "",
+      isCompleted: jsonToBool("is_completed", json) ?? false,
+    );
+
     return Response.json(body: todo.toJson());
   } catch (e) {
-    if (e is FormatException) {
-      return ErrorResponses.jsonDecodeError();
-    } else {
-      return ErrorResponses.internalServerError();
-    }
+    return ErrorResponses.internalServerError();
   }
 }

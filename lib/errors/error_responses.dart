@@ -70,4 +70,11 @@ class ErrorResponses {
       body: 'Not Implemented',
     );
   }
+
+  static Response missingFields() {
+    return Response(
+      statusCode: 400,
+      body: 'Missing Fields',
+    );
+  }
 }

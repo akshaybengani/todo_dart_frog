@@ -14,3 +14,8 @@ build/
 
 # Test related files
 coverage/
+
+package-lock.json
+node_modules
+.env
+lib/constants.dart

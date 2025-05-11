@@ -1,8 +1,8 @@
 include: package:very_good_analysis/analysis_options.5.1.0.yaml
 analyzer:
-  errors:
-    avoid_positional_boolean_parameters: ignore
-
+  exclude:
+    - build/**
+    - lib/generated/prisma/**
 linter:
   rules:
     always_declare_return_types: true

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dart_frog/dart_frog.dart';
-import 'package:todo_list/controllers/todo_controller.dart';
 import 'package:todo_list/errors/error_responses.dart';
-import 'package:todo_list/errors/exceptions.dart';
-import 'package:todo_list/models/todo.dart';
+import 'package:todo_list/generated/prisma/model.dart';
+import 'package:todo_list/helpers/json_converters.dart';
+import 'package:todo_list/repository/todo_repository.dart';
 
 Future<Response> onRequest(RequestContext context, String id) async {
   return switch (context.request.method) {
@@ -16,21 +16,14 @@ Future<Response> onRequest(RequestContext context, String id) async {
 }
 
 Future<Response> _getTodoById(RequestContext context, String id) async {
-  final todos = context.read<TodoController>().todos;
+  final todoRepository = context.read<TodoRepository>();
 
-  try {
-    final todo = todos.firstWhere(
-      (todo) => todo.id == id,
-      orElse: () => throw TodoNotFoundException(id),
-    );
-    return Response.json(body: todo.toJson());
-  } catch (e) {
-    if (e is TodoNotFoundException) {
-      return ErrorResponses.notFound(e.toString());
-    } else {
-      return ErrorResponses.internalServerError();
-    }
+  Todo? todo = await todoRepository.findTodoById(id);
+
+  if (todo == null) {
+    return ErrorResponses.notFound('Todo with id $id not found');
   }
+  return Response.json(body: todo.toJson());
 }
 
 Future<Response> _updateTodoById(RequestContext context, String id) async {
@@ -38,58 +31,48 @@ Future<Response> _updateTodoById(RequestContext context, String id) async {
   if (bodyString.isEmpty) {
     return ErrorResponses.emptyRequestBody();
   }
-
-  final todos = context.read<TodoController>().todos;
-
-  final Todo todo;
+  final todoRepository = context.read<TodoRepository>();
 
   try {
-    todo = todos.firstWhere(
-      (todo) => todo.id == id,
-      orElse: () => throw TodoNotFoundException(id),
+    final json = jsonDecode(bodyString) as Map<String, dynamic>;
+
+    Todo? todo = await todoRepository.findTodoById(id);
+
+    if (todo == null) {
+      return ErrorResponses.notFound('Todo with id $id not found');
+    }
+
+    Todo? response = await todoRepository.updateTodoById(
+      id: id,
+      title: jsonToString("title", json) ?? todo.title ?? "",
+      description: jsonToString("description", json) ?? todo.description ?? "",
+      isCompleted: jsonToBool("title", json) ?? todo.isCompleted ?? false,
     );
+
+    return Response.json(body: response?.toJson());
   } catch (e) {
-    if (e is TodoNotFoundException) {
-      return ErrorResponses.notFound(e.toString());
-    } else {
-      return ErrorResponses.internalServerError();
-    }
-  }
-
-  try {
-    final bodyJson = jsonDecode(bodyString) as Map<String, dynamic>;
-
-    final Todo updatedTodo = todo.copyWithFromJson(bodyJson);
-
-    todos[todos.indexOf(todo)] = updatedTodo;
-
-    return Response.json(body: updatedTodo.toJson());
-  } catch (e) {
-    if (e is FormatException) {
-      return ErrorResponses.jsonDecodeError();
-    } else {
-      return ErrorResponses.internalServerError();
-    }
+    return ErrorResponses.internalServerError();
   }
 }
 
 Future<Response> _deleteTodoById(RequestContext context, String id) async {
-  final todos = context.read<TodoController>().todos;
-
-  final Todo todo;
+  final todoRepository = context.read<TodoRepository>();
 
   try {
-    todo = todos.firstWhere(
-      (todo) => todo.id == id,
-      orElse: () => throw TodoNotFoundException(id),
-    );
-  } catch (e) {
-    if (e is TodoNotFoundException) {
-      return ErrorResponses.notFound(e.toString());
-    } else {
-      return ErrorResponses.internalServerError();
+    Todo? todo = await todoRepository.findTodoById(id);
+
+    if (todo == null) {
+      return ErrorResponses.notFound('Todo with id $id not found');
     }
+
+    Todo? response = await todoRepository.deleteTodoById(id);
+
+    if (response == null) {
+      return ErrorResponses.notFound('Todo with id $id not found');
+    }
+
+    return Response.json(body: response.toJson());
+  } catch (e) {
+    return ErrorResponses.internalServerError();
   }
-  todos.remove(todo);
-  return Response.json(body: todo.toJson());
 }
