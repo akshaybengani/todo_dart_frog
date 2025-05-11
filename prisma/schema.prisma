@@ -19,3 +19,11 @@ model Todo {
   description String
   isCompleted Boolean
 }
+
+model User {
+  id        String   @id
+  createdAt DateTime
+  updatedAt DateTime
+  email     String   @unique
+  password  String
+}

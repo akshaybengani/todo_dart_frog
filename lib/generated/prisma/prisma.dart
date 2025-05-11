@@ -1704,3 +1704,977 @@ class AggregateTodoSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
         '_max': $max,
       };
 }
+
+class UserWhereUniqueInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserWhereUniqueInput({
+    this.id,
+    this.email,
+  });
+
+  final String? id;
+
+  final String? email;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'email': email,
+      };
+}
+
+class UserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserSelect({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final bool? id;
+
+  final bool? createdAt;
+
+  final bool? updatedAt;
+
+  final bool? email;
+
+  final bool? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserWhereInput({
+    this.AND,
+    this.OR,
+    this.NOT,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? AND;
+
+  final Iterable<_i2.UserWhereInput>? OR;
+
+  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? NOT;
+
+  final _i1.PrismaUnion<_i2.StringFilter, String>? id;
+
+  final _i1.PrismaUnion<_i2.DateTimeFilter, DateTime>? createdAt;
+
+  final _i1.PrismaUnion<_i2.DateTimeFilter, DateTime>? updatedAt;
+
+  final _i1.PrismaUnion<_i2.StringFilter, String>? email;
+
+  final _i1.PrismaUnion<_i2.StringFilter, String>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'AND': AND,
+        'OR': OR,
+        'NOT': NOT,
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserOrderByWithRelationInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserOrderByWithRelationInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? createdAt;
+
+  final _i2.SortOrder? updatedAt;
+
+  final _i2.SortOrder? email;
+
+  final _i2.SortOrder? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+enum UserScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
+  id<String>('id', 'User'),
+  createdAt<DateTime>('createdAt', 'User'),
+  updatedAt<DateTime>('updatedAt', 'User'),
+  email<String>('email', 'User'),
+  password<String>('password', 'User');
+
+  const UserScalar(
+    this.name,
+    this.model,
+  );
+
+  @override
+  final String name;
+
+  @override
+  final String model;
+}
+
+class UserCreateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserCreateInput({
+    required this.id,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.email,
+    required this.password,
+  });
+
+  final String id;
+
+  final DateTime createdAt;
+
+  final DateTime updatedAt;
+
+  final String email;
+
+  final String password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserUncheckedCreateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserUncheckedCreateInput({
+    required this.id,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.email,
+    required this.password,
+  });
+
+  final String id;
+
+  final DateTime createdAt;
+
+  final DateTime updatedAt;
+
+  final String email;
+
+  final String password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserCreateManyInput implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserCreateManyInput({
+    required this.id,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.email,
+    required this.password,
+  });
+
+  final String id;
+
+  final DateTime createdAt;
+
+  final DateTime updatedAt;
+
+  final String email;
+
+  final String password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserUpdateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserUpdateInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? id;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      createdAt;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      updatedAt;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? email;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserUncheckedUpdateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserUncheckedUpdateInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? id;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      createdAt;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      updatedAt;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? email;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserUpdateManyMutationInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserUpdateManyMutationInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? id;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      createdAt;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      updatedAt;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? email;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserUncheckedUpdateManyInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserUncheckedUpdateManyInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? id;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      createdAt;
+
+  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
+      updatedAt;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? email;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserCountAggregateOutputType {
+  const UserCountAggregateOutputType({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+    this.$all,
+  });
+
+  factory UserCountAggregateOutputType.fromJson(Map json) =>
+      UserCountAggregateOutputType(
+        id: json['id'],
+        createdAt: json['createdAt'],
+        updatedAt: json['updatedAt'],
+        email: json['email'],
+        password: json['password'],
+        $all: json['_all'],
+      );
+
+  final int? id;
+
+  final int? createdAt;
+
+  final int? updatedAt;
+
+  final int? email;
+
+  final int? password;
+
+  final int? $all;
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+        '_all': $all,
+      };
+}
+
+class UserMinAggregateOutputType {
+  const UserMinAggregateOutputType({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  factory UserMinAggregateOutputType.fromJson(Map json) =>
+      UserMinAggregateOutputType(
+        id: json['id'],
+        createdAt: switch (json['createdAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['createdAt']
+        },
+        updatedAt: switch (json['updatedAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['updatedAt']
+        },
+        email: json['email'],
+        password: json['password'],
+      );
+
+  final String? id;
+
+  final DateTime? createdAt;
+
+  final DateTime? updatedAt;
+
+  final String? email;
+
+  final String? password;
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt?.toIso8601String(),
+        'updatedAt': updatedAt?.toIso8601String(),
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserMaxAggregateOutputType {
+  const UserMaxAggregateOutputType({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  factory UserMaxAggregateOutputType.fromJson(Map json) =>
+      UserMaxAggregateOutputType(
+        id: json['id'],
+        createdAt: switch (json['createdAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['createdAt']
+        },
+        updatedAt: switch (json['updatedAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['updatedAt']
+        },
+        email: json['email'],
+        password: json['password'],
+      );
+
+  final String? id;
+
+  final DateTime? createdAt;
+
+  final DateTime? updatedAt;
+
+  final String? email;
+
+  final String? password;
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt?.toIso8601String(),
+        'updatedAt': updatedAt?.toIso8601String(),
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserGroupByOutputType {
+  const UserGroupByOutputType({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  factory UserGroupByOutputType.fromJson(Map json) => UserGroupByOutputType(
+        id: json['id'],
+        createdAt: switch (json['createdAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['createdAt']
+        },
+        updatedAt: switch (json['updatedAt']) {
+          DateTime value => value,
+          String value => DateTime.parse(value),
+          _ => json['updatedAt']
+        },
+        email: json['email'],
+        password: json['password'],
+        $count: json['_count'] is Map
+            ? _i2.UserCountAggregateOutputType.fromJson(json['_count'])
+            : null,
+        $min: json['_min'] is Map
+            ? _i2.UserMinAggregateOutputType.fromJson(json['_min'])
+            : null,
+        $max: json['_max'] is Map
+            ? _i2.UserMaxAggregateOutputType.fromJson(json['_max'])
+            : null,
+      );
+
+  final String? id;
+
+  final DateTime? createdAt;
+
+  final DateTime? updatedAt;
+
+  final String? email;
+
+  final String? password;
+
+  final _i2.UserCountAggregateOutputType? $count;
+
+  final _i2.UserMinAggregateOutputType? $min;
+
+  final _i2.UserMaxAggregateOutputType? $max;
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt?.toIso8601String(),
+        'updatedAt': updatedAt?.toIso8601String(),
+        'email': email,
+        'password': password,
+        '_count': $count?.toJson(),
+        '_min': $min?.toJson(),
+        '_max': $max?.toJson(),
+      };
+}
+
+class UserCountOrderByAggregateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserCountOrderByAggregateInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? createdAt;
+
+  final _i2.SortOrder? updatedAt;
+
+  final _i2.SortOrder? email;
+
+  final _i2.SortOrder? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserMaxOrderByAggregateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserMaxOrderByAggregateInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? createdAt;
+
+  final _i2.SortOrder? updatedAt;
+
+  final _i2.SortOrder? email;
+
+  final _i2.SortOrder? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserMinOrderByAggregateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserMinOrderByAggregateInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? createdAt;
+
+  final _i2.SortOrder? updatedAt;
+
+  final _i2.SortOrder? email;
+
+  final _i2.SortOrder? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserOrderByWithAggregationInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserOrderByWithAggregationInput({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+    this.$count,
+    this.$max,
+    this.$min,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? createdAt;
+
+  final _i2.SortOrder? updatedAt;
+
+  final _i2.SortOrder? email;
+
+  final _i2.SortOrder? password;
+
+  final _i2.UserCountOrderByAggregateInput? $count;
+
+  final _i2.UserMaxOrderByAggregateInput? $max;
+
+  final _i2.UserMinOrderByAggregateInput? $min;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+        '_count': $count,
+        '_max': $max,
+        '_min': $min,
+      };
+}
+
+class UserScalarWhereWithAggregatesInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserScalarWhereWithAggregatesInput({
+    this.AND,
+    this.OR,
+    this.NOT,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final _i1.PrismaUnion<_i2.UserScalarWhereWithAggregatesInput,
+      Iterable<_i2.UserScalarWhereWithAggregatesInput>>? AND;
+
+  final Iterable<_i2.UserScalarWhereWithAggregatesInput>? OR;
+
+  final _i1.PrismaUnion<_i2.UserScalarWhereWithAggregatesInput,
+      Iterable<_i2.UserScalarWhereWithAggregatesInput>>? NOT;
+
+  final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? id;
+
+  final _i1.PrismaUnion<_i2.DateTimeWithAggregatesFilter, DateTime>? createdAt;
+
+  final _i1.PrismaUnion<_i2.DateTimeWithAggregatesFilter, DateTime>? updatedAt;
+
+  final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? email;
+
+  final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'AND': AND,
+        'OR': OR,
+        'NOT': NOT,
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserCountAggregateOutputTypeSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserCountAggregateOutputTypeSelect({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+    this.$all,
+  });
+
+  final bool? id;
+
+  final bool? createdAt;
+
+  final bool? updatedAt;
+
+  final bool? email;
+
+  final bool? password;
+
+  final bool? $all;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+        '_all': $all,
+      };
+}
+
+class UserGroupByOutputTypeCountArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserGroupByOutputTypeCountArgs({this.select});
+
+  final _i2.UserCountAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class UserMinAggregateOutputTypeSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserMinAggregateOutputTypeSelect({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final bool? id;
+
+  final bool? createdAt;
+
+  final bool? updatedAt;
+
+  final bool? email;
+
+  final bool? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserGroupByOutputTypeMinArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserGroupByOutputTypeMinArgs({this.select});
+
+  final _i2.UserMinAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class UserMaxAggregateOutputTypeSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserMaxAggregateOutputTypeSelect({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+  });
+
+  final bool? id;
+
+  final bool? createdAt;
+
+  final bool? updatedAt;
+
+  final bool? email;
+
+  final bool? password;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+      };
+}
+
+class UserGroupByOutputTypeMaxArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserGroupByOutputTypeMaxArgs({this.select});
+
+  final _i2.UserMaxAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class UserGroupByOutputTypeSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const UserGroupByOutputTypeSelect({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.email,
+    this.password,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  final bool? id;
+
+  final bool? createdAt;
+
+  final bool? updatedAt;
+
+  final bool? email;
+
+  final bool? password;
+
+  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeCountArgs>? $count;
+
+  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeMinArgs>? $min;
+
+  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeMaxArgs>? $max;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'email': email,
+        'password': password,
+        '_count': $count,
+        '_min': $min,
+        '_max': $max,
+      };
+}
+
+class AggregateUser {
+  const AggregateUser({
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  factory AggregateUser.fromJson(Map json) => AggregateUser(
+        $count: json['_count'] is Map
+            ? _i2.UserCountAggregateOutputType.fromJson(json['_count'])
+            : null,
+        $min: json['_min'] is Map
+            ? _i2.UserMinAggregateOutputType.fromJson(json['_min'])
+            : null,
+        $max: json['_max'] is Map
+            ? _i2.UserMaxAggregateOutputType.fromJson(json['_max'])
+            : null,
+      );
+
+  final _i2.UserCountAggregateOutputType? $count;
+
+  final _i2.UserMinAggregateOutputType? $min;
+
+  final _i2.UserMaxAggregateOutputType? $max;
+
+  Map<String, dynamic> toJson() => {
+        '_count': $count?.toJson(),
+        '_min': $min?.toJson(),
+        '_max': $max?.toJson(),
+      };
+}
+
+class AggregateUserCountArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const AggregateUserCountArgs({this.select});
+
+  final _i2.UserCountAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class AggregateUserMinArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const AggregateUserMinArgs({this.select});
+
+  final _i2.UserMinAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class AggregateUserMaxArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const AggregateUserMaxArgs({this.select});
+
+  final _i2.UserMaxAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class AggregateUserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const AggregateUserSelect({
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  final _i1.PrismaUnion<bool, _i2.AggregateUserCountArgs>? $count;
+
+  final _i1.PrismaUnion<bool, _i2.AggregateUserMinArgs>? $min;
+
+  final _i1.PrismaUnion<bool, _i2.AggregateUserMaxArgs>? $max;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '_count': $count,
+        '_min': $min,
+        '_max': $max,
+      };
+}
