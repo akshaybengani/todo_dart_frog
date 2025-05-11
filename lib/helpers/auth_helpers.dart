@@ -17,7 +17,8 @@ Future<String> generateJWT({required String id}) async {
   return jwt;
 }
 
-Future<bool> verifyJWT({required String token}) async {
+Future<(bool, dynamic)> verifyJWT({required String token}) async {
   final JWT? jwt = JWT.tryVerify(token, SecretKey(JWT_SIGN_KEY));
-  return jwt != null;
+
+  return (jwt != null, jwt?.payload);
 }

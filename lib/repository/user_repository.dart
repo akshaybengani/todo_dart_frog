@@ -37,4 +37,19 @@ class UserRepository {
     }
     return null;
   }
+
+  Future<User?> fetchFromAccessToken({required String token}) async {
+    (bool, dynamic) response = await verifyJWT(token: token);
+
+    if (!response.$1) {
+      return null;
+    }
+    final String? userid = response.$2["user"]["id"] as String?;
+
+    if (userid == null) {
+      return null;
+    }
+
+    return await prisma.user.findUnique(where: UserWhereUniqueInput(id: userid));
+  }
 }

@@ -3,10 +3,10 @@ import 'package:todo_list/generated/prisma/client.dart';
 import 'package:todo_list/repository/user_repository.dart';
 
 Handler middleware(Handler handler) {
-  return handler.use(_provideTodoRepository());
+  return handler.use(_provideUserRepository());
 }
 
-Middleware _provideTodoRepository() {
+Middleware _provideUserRepository() {
   return provider<UserRepository>(
     (context) => UserRepository(context.read<PrismaClient>()),
   );
